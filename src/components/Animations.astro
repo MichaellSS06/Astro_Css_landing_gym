@@ -6,9 +6,12 @@
 
     <section>
       <img src="/edificios.jpg" alt="Imagen 1" />
-      <img src="/gym.JPG" alt="Imagen 2" />
-      <img src="/hotel.jpg" alt="Imagen 3" />
+      <img src="/hotel.jpg" alt="Imagen 2" />
+      <img src="/gym.JPG" alt="Imagen 3" />
       <img src="/puente.jpg" alt="Imagen 4" />
+      <img src="/perfil.jpg" alt="Imagen 5" />
+      <img src="/twitch.png" alt="Imagen 6" />
+      <img src="/kick.png" alt="Imagen 7" />
     </section>
 </div>
 
@@ -47,31 +50,35 @@
     }
 
     section {
-        display: grid;
+        /* display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 20px;
         width: 80%;
-        max-width: 1000px;
+        max-width: 1000px; */
+        columns: 2;
+        padding: 16px 32px;
+        column-gap: 32px;
     }
 
-    img {
+    section img {
         width: 100%;
         height: auto;
         border-radius: 12px;
+        margin-bottom: 20px;
         opacity: 0;
         transform: translateY(100px) scale(0.8);
         /* === View-timeline === */
-        view-timeline-name: --imgTimeline;
-        view-timeline-axis: block;
-        animation: showImage both ease-out;
-        animation-timeline: --imgTimeline;
-        animation-range: entry 0% cover 50%;
+        /* view-timeline-name: --imgTimeline;
+        view-timeline-axis: block; */
+        animation: showImage linear both;
+        animation-timeline: view();
+        animation-range: entry 20% cover 30%;
     }
 
     @keyframes showImage {
         from {
             opacity: 0;
-            transform: translateY(100px) scale(0.8);
+            transform: translateY(100px) scale(0.5);
         }
         to {
             opacity: 1;
