@@ -1,0 +1,85 @@
+---
+---
+
+<div>
+    <h1>Galería Animada</h1>
+
+    <section>
+      <img src="/edificios.jpg" alt="Imagen 1" />
+      <img src="/gym.JPG" alt="Imagen 2" />
+      <img src="/hotel.jpg" alt="Imagen 3" />
+      <img src="/puente.jpg" alt="Imagen 4" />
+    </section>
+</div>
+
+<style>
+    div {
+        font-family: system-ui, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: #fafafa;
+        min-height: 200vh; /* permite scroll */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    h1 {
+        font-size: 3rem;
+        margin: 80px 0 40px;
+        width: 100%;
+        text-align: center;
+        position: sticky;
+        top: 0;
+        /* === Scroll-timeline del root === */
+        animation: fadeTitle linear both;
+        animation-timeline: scroll(root);
+        animation-range: 0 200px;
+        z-index: 1;
+    }
+
+    @keyframes fadeTitle {
+        to {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(5px);
+            font-size: 28px;
+        }
+    }
+
+    section {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        width: 80%;
+        max-width: 1000px;
+    }
+
+    img {
+        width: 100%;
+        height: auto;
+        border-radius: 12px;
+        opacity: 0;
+        transform: translateY(100px) scale(0.8);
+        /* === View-timeline === */
+        view-timeline-name: --imgTimeline;
+        view-timeline-axis: block;
+        animation: showImage both ease-out;
+        animation-timeline: --imgTimeline;
+        animation-range: entry 0% cover 50%;
+    }
+
+    @keyframes showImage {
+        from {
+            opacity: 0;
+            transform: translateY(100px) scale(0.8);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+</style>
+  
+
+
+
